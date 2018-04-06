@@ -1,2 +1,2 @@
 /.idea
-.dbsqlite3
+db.sqlite3
