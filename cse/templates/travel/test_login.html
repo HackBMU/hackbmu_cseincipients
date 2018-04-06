@@ -6,6 +6,30 @@
     <title>Title</title>
 </head>
 <body>
+<form id="user_form" class="col s12" method="post" action="/register/" enctype="multipart/form-data">
+					{% csrf_token %}
+					{% for field in user_form.visible_fields %}
+					<div class="row">
+						<div class="input-field">
+							{{ field.errors }}
+							<label for="{{ field.name }}">{{ field.help_text }}</label>
+							{{ field }}
+						</div>
+					</div>
+					{% endfor %}
 
+					{% for field in profile_form.visible_fields %}
+					<div class="row">
+						<div class="input-field">
+							{{ field.errors }}
+							<label for="{{ field.name }}">{{ field.help_text }}</label>
+							{{ field }}
+						</div>
+					</div>
+					{% endfor %}
+					<div class="input-field" style="text-align: center;">
+						<input type="submit" value="Register" class="btn btn-login">
+					</div>
+				</form>
 </body>
 </html>

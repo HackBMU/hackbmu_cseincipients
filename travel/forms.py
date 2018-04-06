@@ -23,8 +23,10 @@ class UserProfileForm(forms.ModelForm):
     gender = forms.ChoiceField(choices=[('0', 'Female'), ('1', 'Male'), ('2', 'Other')])
     picture = forms.ImageField(help_text='Profile Picture', required=False,
                                widget=forms.FileInput(attrs={'type': 'file'}))
-    location = forms.CharField(choices=[('Gurgaon','Gurgaon'),('Kapriwas','Kapriwas'),('Manesar','Manesar')])
+    location = forms.ChoiceField(choices=[('Gurgaon','Gurgaon'),('Kapriwas','Kapriwas'),('Manesar','Manesar')])
+    aadhar_no =forms.CharField(max_length=12, required=True, help_text="Aadhar Number",
+                               widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
 
     class Meta:
         model = UserProfile
-        fields = ('name', 'contact', 'college', 'gender', 'picture', 'Terms_and_Conditions')
+        fields = ('name', 'contact', 'college', 'gender', 'picture', 'location', 'aadhar_no')

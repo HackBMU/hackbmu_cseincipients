@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="login_form" method="post" action="/login/">
+					{% csrf_token %}
+					<div class="input-field">
+						<label for="username">Username</label>
+						<input type="text" name="username" value="" size="50"/>
+					</div>
+					<div class="input-field">
+						<label for="password">Password</label>
+						<input type="password" name="password" value="" size="50"/>
+					</div>
+					<div class="input-field" style="text-align: center;">
+						<input type="submit" class="btn-login btn" value="submit"/>
+					</div>
+				</form>
+</body>
+</html>
