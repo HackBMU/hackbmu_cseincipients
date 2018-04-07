@@ -1,0 +1,50 @@
+{% extends 'travel/baseVendor.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/myPrevTripsV.css' %}">
+{% endblock %}
+{% block title %}
+My Previous Trips
+{% endblock %}
+{% block content %}
+<div style="margin-top: -100px;">
+  {% for i in trip_details %}
+<div class="row container" style="background: #FFA5A5;">
+<div class="col m3 s12" style="color: #626262">
+  <ul>
+    <li><h6>Source:-</h6></li>
+    <li><h6>Destination:-</h6></li>
+    <li><h6>Date:-</h6></li>
+    <li><h6>Time:-</h6></li>
+    <li><h6>No. of Seats Taken:-</h6></li>
+  </ul>
+</div>
+<div class="col m3 s12" style="color: #000000">
+  <ul>
+    <li><h6>{{ i.source }}</h6></li>
+    <li><h6>{{ i.destination }}</h6></li>
+    <li><h6>{{ i.date }}</h6></li>
+    <li><h6>{{ i.time }}</h6></li>
+    <li><h6>{{ i.seats_count }}</h6></li>
+  </ul>
+</div>
+    <div class="col m3 s12" style="color: #626262">
+  <ul>
+    <li><h6>Username of Vendor:-</h6></li>
+    <li><h6>Vehicle No.:-</h6></li>
+    <li><h6>Price:-</h6></li>
+    <li><h6>Transport Mode:-</h6></li>
+  </ul>
+</div>
+<div class="col m3 s12" style="color: #000000">
+  <ul>
+    <li><h6>{{ i.vendor_username }}</h6></li>
+    <li><h6>{{ i.vehicle_no }}</h6></li>
+    <li><h6>{{ i.price }}</h6></li>
+    <li><h6>{{ i.transport_mode }}</h6></li>
+  </ul>
+</div>
+</div>
+  {% endfor %}
+</div>
+ {% endblock %}

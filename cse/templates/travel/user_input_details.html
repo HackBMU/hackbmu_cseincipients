@@ -1,0 +1,68 @@
+{% extends 'travel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/user_input_details.css' %}">
+{% endblock %}
+{% block title %}
+Input Results
+{% endblock %}
+{% block content %}
+    <div style="margin-top: -100px;">
+        {% for i in vendors_filter %}
+    <div class="row container" style="background:#ffa5a5; margin-top: -100px;">
+      <div class="col m3 s12" style="color:#626262">
+        <ul>
+          <li><h6>vendor username</h6></li>
+          <li><h6>Vehicle_no</h6></li>
+          <li><h6>Date</h6></li>
+          <li><h6>Time</h6></li>
+          <li><h6>Number of seats</h6></li>
+          
+        </ul>
+      </div>
+      <div class="col m3 s12" style="color:#000000">
+          <ul>
+            <li><h6>{{ i.username }}</h6></li>
+            <li><h6>{{ i.vehicle_no }}</h6></li>
+            <li><h6>{{ date }}</h6></li>
+            <li><h6>{{ time }}</h6></li>
+            <li><h6>{{ seats_need }}</h6></li>
+            
+          </ul>
+        </div>
+      <div class="col m3 s12" style="color:#626262">
+        <ul>
+            <li><h6>Mode of transport</h6></li>
+          <li><h6>Source</h6></li>
+          <li><h6>Destination</h6></li>
+          <li><h6>Price</h6></li>
+        </ul>
+      </div>
+      <div class="col m3 s12" style="color:#000000">
+          <ul>
+              <li><h6>{{ i.transport_mode }}</h6></li>
+            <li><h6>{{ source }}</h6></li>
+            <li><h6>{{ destination }}</h6></li>
+            <li><h6>{{ i.price }}</h6></li>
+          </ul>
+        </div>
+        <form id="user_form" class="col s12" method="post" action="/save_user_services/" enctype="multipart/form-data">
+					{% csrf_token %}
+            <input type="hidden" name="vendor_username" value="{{ i.username }}" />
+            <input type="hidden" name="vehicle_no" value="{{ i.vehicle_no }}" />
+            <input type="hidden" name="date" value="{{ date }}" />
+            <input type="hidden" name="time" value="{{ time }}" />
+            <input type="hidden" name="num_seats" value="{{ seats_need }}" />
+            <input type="hidden" name="mot" value="{{ i.transport_mode }}" />
+            <input type="hidden" name="source" value="{{ source }}" />
+            <input type="hidden" name="dest" value="{{ destination }}" />
+            <input type="hidden" name="price" value="{{ i.price }}" />
+            <div class="input-field" style="text-align: center;">
+						<input type="submit" value="Book" class="btn btn-login">
+					</div>
+				</form>
+    </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

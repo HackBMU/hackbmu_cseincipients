@@ -1,0 +1,105 @@
+  <!DOCTYPE html>
+  {% load staticfiles %}
+  <html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+    <!-- Import personal CSS -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/base.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/base1.css'%}">
+      {% block css %}
+      {% endblock %}
+      <title>
+{% block title %}
+      {% endblock %}
+      </title>
+
+  </head>
+  <body>
+   <!-- Nav-Bar -->
+   <nav>
+    <div class="nav-wrapper">
+      <ul class="right show-on-small">
+       <li>
+        <a href="collapsible.html" class="btn btn-login green hide-on-med-and-up">Login</a>
+      </li>
+      <li>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      </li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="\" class="active">Home</a></li>
+      <li><a href="\trip_prev">My Previous Trips</a></li>
+      <li><a href="\profile">My Account</a></li>
+      <li><a href="\contact">Contact Us</a></li>
+      <li><a href="\trip_planner">My Planner</a></li>
+        <li><a href="\emergency">Call For Help</a></li>
+
+      <li><a href="\logout">Logout</a></li>
+            <li><a href="#">    </a></li>
+
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="\" class="active">Home</a></li>
+      <li><a href="\myPrevTrip">My Trips</a></li>
+      <li><a href="\profile">My Account</a></li>
+      <li><a href="\contact">Contact Us</a></li>
+      <li><a href="\trip_planner">My Planner</a></li>
+        <li><a href="\emergency">Call For Help</a></li>
+
+      <li><a href="\logout">Logout</a></li>
+            <li><a href="#">    </a></li>
+
+    </ul>
+  </div>
+</nav>
+  <!-- Content -->
+  <div class="skewedBox">
+    <div class="box">
+      <h1>S<strong style="color: #DA4453">HE</strong> Trip Planner</h1>
+      <h6>We aim to provide safe journey in the most convenient and economic way because <strong>"When we gamble with safety we bet our life"</strong>
+      </h6>
+    </div>
+  </div>
+   {% block content %}
+   {% endblock %}
+
+        <footer>
+          <div class="row">
+            <div class="col m4 s6" align="center" style="margin-top: 20px;" >
+              <address>
+                SHE Trip Planner<br>
+                BML Munjal University<br>
+                NH 8, Gurugram(HR)<br>
+                <i class="fas fa-phone"></i> 1800 103 6888<br>
+                122413<br>
+              </address>
+            </div>
+            <div class="col m4 s6" align="center">
+              <img src="{% static 'images/business.png' %}" style="max-height: 114px; max-width: 114px">
+              <p>&copy; SHE Trip Planner 2018</p>
+            </div>
+            <div class="col m4 s12" align="center"  style="margin-top: 50px;">
+              <a target="_blank"><img src="{% static 'images/facebook.png' %}"></a>
+              <a target="_blank"><img src="{% static 'images/youtube.png' %}"></a>
+            </div>
+          </div>
+        </footer>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!-- Scroll -->
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+   {% block js %}
+   {% endblock %}
+
+</body>
+</html>

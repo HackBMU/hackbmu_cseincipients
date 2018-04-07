@@ -1,7 +1,10 @@
 {% extends 'travel/base.html' %}
 {% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 {% block title %}
-Register
+Trip Planner
 {% endblock %}
 {% block content %}
 <div class="container" align="center" style="padding-left: 250px;padding-right: 250px; background : #626262; margin-top:-100px; margin-bottom:50px;">
@@ -10,19 +13,11 @@ Register
         <p>...</p>
     </a>
 					</div>
-<form id="user_form" class="col s12" method="post" action="/register/" enctype="multipart/form-data">
+    <form id="user_form" class="col s12" method="post" action="/user_input_result/" enctype="multipart/form-data">
 					{% csrf_token %}
-					{% for field in user_form.visible_fields %}
-					<div class="row">
-						<div class="input-field">
-							{{ field.errors }}
-							<label for="{{ field.name }}">{{ field.help_text }}</label>
-							{{ field }}
-						</div>
-					</div>
-					{% endfor %}
-
-					{% for field in profile_form.visible_fields %}
+        {% for field in form.hidden_fields %}
+        {% endfor %}
+					{% for field in form.visible_fields %}
 					<div class="row">
 						<div class="input-field">
 							{{ field.errors }}
@@ -32,13 +27,16 @@ Register
 					</div>
 					{% endfor %}
 					<div class="input-field" style="text-align: center;">
-						<input type="submit" value="Register" class="btn btn-login">
+						<input type="submit" value="Submit" class="btn btn-login">
 					</div>
 				</form>
-    <div class="input-field" style="text-align: center; margin-bottom:50px;">
+       <div class="input-field" style="text-align: center; margin-bottom:50px;">
     <a >
         <p>...</p>
     </a>
 					</div>
 </div>
+ {% endblock %}
+{% block js %}
+ <script type="text/javascript" src="/static/js/ourTeam.js"></script>
 {% endblock %}

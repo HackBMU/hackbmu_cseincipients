@@ -1,14 +1,18 @@
-<!DOCTYPE html>
+{% extends 'travel/base.html' %}
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form id="login_form" method="post" action="/login/">
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+<div class="container" align="center" style="padding-left: 250px;padding-right: 250px; background : #626262; margin-top:-100px; margin-bottom:50px;">
+<div class="input-field" style="text-align: center; margin-bottom:50px;">
+    <a >
+        <p>...</p>
+    </a>
+					</div>
+    <form id="login_form" method="post" action="/login/">
 					{% csrf_token %}
-					<div class="input-field">
+					<div class="input-field" align="center" style="margin-top:30px !important;" >
 						<label for="username">Username</label>
 						<input type="text" name="username" value="" size="50"/>
 					</div>
@@ -17,8 +21,23 @@
 						<input type="password" name="password" value="" size="50"/>
 					</div>
 					<div class="input-field" style="text-align: center;">
-						<input type="submit" class="btn-login btn" value="submit"/>
+						<input type="submit" class="btn-login btn" value="Login"/>
 					</div>
 				</form>
-</body>
-</html>
+    <div class="input-field" style="text-align: center;">
+    <a >
+        <p>Not registered yet??</p>
+    </a>
+					</div>
+<div class="input-field" style="text-align: center; margin-bottom:50px;">
+    <a href="\register">
+        <input type="submit" class="btn-login btn" value="Register"/>
+    </a>
+					</div>
+<div class="input-field" style="text-align: center; margin-bottom:50px;">
+    <a >
+        <p>...</p>
+    </a>
+					</div>
+</div>
+{% endblock %}

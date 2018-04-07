@@ -1,0 +1,22 @@
+{% extends 'travel/baseVendor.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<div class="vision" style="margin-top:-90px;" align="center">
+  <p> Login Successful!!</p>
+</div>
+  
+    <div align='center' style="margin-bottom:50px !important; margin-top:40px;"> 
+<a href="\register_trip_vendor">
+        <button type="button" class="button">
+            <h3> Register a Trip </h3>
+        </button></a>
+          
+    </div>
+    
+ {% endblock %}

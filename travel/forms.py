@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from travel.models import UserProfile
+from travel.models import UserProfile, user_services
 
 class UserForm(forms.ModelForm):
     username = forms.CharField(max_length=100, required=True, help_text="Username",
@@ -30,3 +30,22 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('name', 'contact', 'college', 'gender', 'picture', 'location', 'aadhar_no')
+
+class TripPlannerForm(forms.ModelForm):
+    source = forms.CharField(max_length=30, required=True,
+                             help_text="Source (Options are : BML, Manesar, Rajiv Chowk, Iffco Chowk)",
+                           widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
+    destination = forms.CharField(max_length=30, required=True,
+                                  help_text="Destination (Options are : BML, Manesar, Rajiv Chowk, Iffco Chowk)",
+                           widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
+    date = forms.CharField(max_length=30, required=True,
+                           help_text="Date (Format is DD/MM/YYYY)",
+                           widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
+    time = forms.CharField(max_length=30, required=True,
+                           help_text="Time (Format is HH:MM AM/PM)",
+                           widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
+    seats_need = forms.IntegerField(help_text="Number of seats")
+
+    class Meta:
+        model = user_services
+        fields = ('source', 'destination', 'date', 'time', 'seats_need')

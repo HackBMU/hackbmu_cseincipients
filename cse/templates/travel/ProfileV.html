@@ -1,0 +1,54 @@
+ {% extends 'travel/baseVendor.html' %}
+{% load staticfiles %}
+ {% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/profileV.css' %}">
+{% endblock %}
+{% block title %}
+Profile
+{% endblock %}
+{% block content %}
+  <section class="details container" style="background: #FFA5A5; margin-top: -100px">
+<div class="user-profile" align="center">
+  <img class="avatar" src="\media/{{ picture }}" alt="Profile Picture" />
+</div>
+<style>
+.pro {
+    border: 1px solid powderblue;
+    padding: 20px;
+    size : 30px !important;
+    background-color: powderblue;
+    opacity: 0.5;
+
+}
+.pro1 {
+    border: 1px solid powderblue;
+    padding: 20px;
+    size : 30px !important;
+    background-color: powderblue;
+    opacity: 0.5;
+
+}
+</style>
+<div class="row" style="padding:20px;">
+<div class="col m6 s12" align="center" style="color: #000000; ">
+  <ul>
+      <li><h6 class="pro">Name</h6></li>
+      <li><h6 class="pro">E-Mail</h6></li>
+      <li><h6 class="pro">Gender</h6></li>
+      <li><h6 class="pro">Contact</h6></li>
+      <li><h6 class="pro">Aadhar No.</h6></li>
+
+    </ul>
+</div>
+<div class="col m6 s12" align="center" style="color: #000000; ">
+  <ul>
+      <li><h6 class="pro1">{{ name }}</h6></li>
+      <li><h6 class="pro1">{{ email }}</h6></li>
+      <li><h6 class="pro1">{{ gender }}</h6></li>
+      <li><h6 class="pro1">{{ contact }}</h6></li>
+      <li><h6 class="pro1">{{ aadhar }}</h6></li>
+    </ul>
+</div>
+</div>
+ </section>
+ {% endblock %}

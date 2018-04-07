@@ -1,0 +1,17 @@
+{% extends 'travel/baseVendor.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/homeVendor.css' %}">
+{% endblock %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<div style="margin-top:-90px;" align="center">
+
+    <img src="{% static 'images/siren.png' %}">
+    <h3 style="color: #000000">Click Siren to Call!!</h3>
+</div>
+
+    
+ {% endblock %}

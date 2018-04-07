@@ -1,16 +1,14 @@
+{% extends 'travel/base.html' %}
 {% load staticfiles %}
-<link type="text/css" rel="stylesheet" href="{% static 'css/main4.css' %}">
-<link type="text/css" rel="stylesheet" href="{% static 'css/campusamb1.css' %}">
-<title>User Profile</title>
-<section class="skewedBox">
-    <div class="box">
+{% block title %}
+User Profile
+{% endblock %}
+{% block content %}
         <h3>My Profile</h3>
-    </div>
-</section>
 <section class="details container row" style="margin:4vh 5vw !important;width:90% !important">
     <div class="card horizontal">
         <div class="card-image">
-            <img src="{{ MEDIA_URL }}{{ picture }}" style="height:40vh">
+            <img src="\media/{{ picture }}" style="height:40vh">
         </div>
         <div class="card-stacked">
             <div class="card-content ">
@@ -30,13 +28,8 @@
         </div>
     </div>
 
-     <!-- Modal for editing profile -->
-  <div id="modalEdit" class="modal black">
-   <div class="modal-content ">
       <h4>Edit Profile</h4>
-
-
-      <form id="category_form" class="col s12" method="post" enctype="multipart/form-data" action="/profile/">
+    <form id="category_form" class="col s12" method="post" enctype="multipart/form-data" action="/profile/">
       {% csrf_token %}
           {% for hidden in form.hidden_fields %}
               {{ hidden }}
@@ -53,9 +46,5 @@ SUBMIT
         </button>
     </form>
 
-          <!--<a href="\67milestone" class="modal-action modal-close waves-effect waves-blue btn-flat ">Submit</a>-->
-
-     </div>
-   </div>
-
 </section>
+{% endblock %}
