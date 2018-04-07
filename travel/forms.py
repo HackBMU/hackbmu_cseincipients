@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from travel.models import UserProfile, user_services
+from travel.models import UserProfile, user_services, Vendor_services
 
 class UserForm(forms.ModelForm):
     username = forms.CharField(max_length=100, required=True, help_text="Username",
@@ -49,3 +49,29 @@ class TripPlannerForm(forms.ModelForm):
     class Meta:
         model = user_services
         fields = ('source', 'destination', 'date', 'time', 'seats_need')
+
+class VendorTripPlannerForm(forms.ModelForm):
+    date = forms.CharField(max_length=30, required=True,
+                           help_text="Date (Format is DD/MM/YYYY)",
+                           widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
+    time = forms.CharField(max_length=30, required=True,
+                           help_text="Time (Format is HH:MM AM/PM)",
+                           widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
+    seats_count = forms.IntegerField(help_text="Number of seats")
+    price = forms.IntegerField(help_text="Price")
+    vehicle_no = forms.CharField(max_length=30, required=True,
+                           help_text="Vehicle No.",
+                           widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
+    transport_mode = forms.CharField(max_length=30, required=True,
+                           help_text="Transport Mode",
+                           widget=forms.TextInput(attrs={'class': 'validate', 'input': 'text'}))
+    username = forms.HiddenInput()
+    hop_bml = forms.HiddenInput()
+    hop_manesar = forms.HiddenInput()
+    hop_rajiv_chowk=forms.HiddenInput()
+    hop_iffco_chowk=forms.HiddenInput()
+
+    class Meta:
+        model = Vendor_services
+        fields = ('date', 'time', 'seats_count', 'price', 'vehicle_no', 'transport_mode')
+

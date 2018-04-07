@@ -1,7 +1,7 @@
 from travel.models import UserProfile, Vendors, Vendor_services, user_services
 from django.contrib.auth.models import User
 from django import forms
-from travel.forms import UserForm,UserProfileForm, TripPlannerForm
+from travel.forms import UserForm,UserProfileForm, TripPlannerForm, VendorTripPlannerForm
 from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
@@ -254,6 +254,15 @@ def homeVendor(request):
 
 def profileV(request):
     context_dict = {}
+    user_details = list(Vendors.objects.filter(username=request.user.username))
+    for i in user_details:
+        context_dict['name'] = i.name
+        context_dict['contact'] = i.contact
+        context_dict['picture'] = i.picture
+        context_dict['gender'] = i.gender
+        context_dict['aadhar'] = i.aadhar_no
+        context_dict['type'] = i.type
+        context_dict['email'] = i.email
     return render(request, 'travel/ProfileV.html', context_dict)
 
 def emergencyV(request):
@@ -274,4 +283,31 @@ def contactV(request):
 
 def registerTripVendor(request):
     context_dict = {}
+    form = VendorTripPlannerForm()
+    if request.method == 'POST':
+        form = VendorTripPlannerForm(data=request.POST)
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.username=request.user.username
+            hop1 = False
+            if request.POST.get('group1') == "on":
+                hop1 = True
+            hop2 = False
+            if request.POST.get('group2') == "on":
+                hop2 = True
+            hop3 = False
+            if request.POST.get('group3') == "on":
+                hop3 = True
+            hop4 = False
+            if request.POST.get('group4') == "on":
+                hop4 = True
+            data.hop_bml = hop1
+            data.hop_manesar = hop2
+            data.hop_rajiv_chowk = hop3
+            data.hop_iffco_chowk = hop4
+            data.save()
+            print(data.username)
+        else:
+            print(form.errors)
+    context_dict['form'] = form
     return render(request, 'travel/RegisterTripVendor.html', context_dict)

@@ -13,7 +13,7 @@ Trip Planner
         <p>...</p>
     </a>
 					</div>
-    <form id="user_form" class="col s12" method="post" action="/user_input_result/" enctype="multipart/form-data">
+<form id="user_form" class="col s12" method="post" action="/register_trip_vendor/" enctype="multipart/form-data">
 					{% csrf_token %}
         {% for field in form.hidden_fields %}
         {% endfor %}
@@ -26,10 +26,30 @@ Trip Planner
 						</div>
 					</div>
 					{% endfor %}
+    <p>
+        Choose Hops (Source and Destination included)
+    </p>
+<p>
+                        <input type="checkbox" id="test1" name="group1"/>
+                        <label for="test1">BML</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="test2" name="group2"/>
+                        <label for="test2">Manesar</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="test3" name="group3"/>
+                        <label for="test3">Rajiv Chowk</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="test4" name="group4"/>
+                        <label for="test4">Iffco Chowk</label>
+                    </p>
 					<div class="input-field" style="text-align: center;">
 						<input type="submit" value="Submit" class="btn btn-login">
 					</div>
 				</form>
+
        <div class="input-field" style="text-align: center; margin-bottom:50px;">
     <a >
         <p>...</p>
