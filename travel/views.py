@@ -244,14 +244,17 @@ def success(request):
     context_dict={}
     return render(request, 'travel/success.html', context_dict)
 
+@login_required(login_url='/login/')
 def emergency(request):
     context_dict = {}
     return render(request, 'travel/Emergency.html', context_dict)
 
+@login_required(login_url='/login/')
 def homeVendor(request):
     context_dict = {}
     return render(request, 'travel/homeVendor.html', context_dict)
 
+@login_required(login_url='/login/')
 def profileV(request):
     context_dict = {}
     user_details = list(Vendors.objects.filter(username=request.user.username))
@@ -265,22 +268,29 @@ def profileV(request):
         context_dict['email'] = i.email
     return render(request, 'travel/ProfileV.html', context_dict)
 
+@login_required(login_url='/login/')
 def emergencyV(request):
     context_dict = {}
     return render(request, 'travel/EmergencyV.html', context_dict)
 
+@login_required(login_url='/login/')
 def myPrevTripV(request):
     context_dict = {}
+    trips = list(Vendor_services.objects.filter(username=request.user.username))
+    context_dict['trip_details'] = trips
     return render(request, 'travel/myPrevTripV.html', context_dict)
 
+@login_required(login_url='/login/')
 def contact(request):
     context_dict = {}
     return render(request, 'travel/contact.html', context_dict)
 
+@login_required(login_url='/login/')
 def contactV(request):
     context_dict = {}
     return render(request, 'travel/contactV.html', context_dict)
 
+@login_required(login_url='/login/')
 def registerTripVendor(request):
     context_dict = {}
     form = VendorTripPlannerForm()
