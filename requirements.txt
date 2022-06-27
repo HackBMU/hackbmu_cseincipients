@@ -41,7 +41,7 @@ pyparsing==2.2.0
 PySocks==1.5.7
 python-dateutil==2.6.1
 pytz==2017.2
-reportlab==3.4.0
+reportlab==3.5.55
 requests==2.18.4
 requests-file==1.4.3
 requests-ftp==0.3.1
